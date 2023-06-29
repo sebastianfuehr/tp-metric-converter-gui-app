@@ -23,12 +23,14 @@ meters_input = ttk.Entry(main_frame, textvariable=meters_value)
 meters_input.grid(column=1, row=0)
 meters_input.focus()
 
+
 def convert():
     try:
         value = float(meters_value.get())
         feet_value.set('%.3f' % (value * 3.28084))
     except ValueError:
         pass
+
 
 btn_convert = ttk.Button(main_frame, text='Convert', command=convert)
 btn_convert.grid(column=0, row=2, columnspan=2)
