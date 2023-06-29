@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+import ttkbootstrap as ttkb
 
-root = tk.Tk()
+root = ttkb.Window(themename='darkly', size=(400, 200))
 root.title('Metric Convertert')
 
 main_frame = ttk.Frame(root)
@@ -10,17 +11,26 @@ main_frame.grid()
 feet_value = tk.StringVar()
 meters_value = tk.StringVar()
 
-feet_label = ttk.Label(main_frame, text='feet')
-feet_label.grid(column=0, row=1)
+feet_label = ttkb.Label(main_frame,
+                        text='Feet:',
+                        font=('Helvetica', 18))
+feet_label.grid(column=0, row=1, padx=5, pady=5)
 
-feet_display = ttk.Label(main_frame, textvariable=feet_value)
-feet_display.grid(column=1, row=1)
+feet_display = ttkb.Label(main_frame,
+                          textvariable=feet_value,
+                          font=('Helvetica', 18))
+feet_display.grid(column=1, row=1, padx=5, pady=5)
 
-meters_label = ttk.Label(main_frame, text='meters')
-meters_label.grid(column=0, row=0)
+meters_label = ttkb.Label(main_frame,
+                          text='Meters:',
+                          font=('Helvetica', 18))
+meters_label.grid(column=0, row=0, padx=5, pady=5)
 
-meters_input = ttk.Entry(main_frame, textvariable=meters_value)
-meters_input.grid(column=1, row=0)
+meters_input = ttkb.Entry(main_frame,
+                          textvariable=meters_value,
+                          bootstyle='success',
+                          font=('Helvetica', 18))
+meters_input.grid(column=1, row=0, padx=5, pady=5)
 meters_input.focus()
 
 
@@ -32,7 +42,10 @@ def convert():
         pass
 
 
-btn_convert = ttk.Button(main_frame, text='Convert', command=convert)
+btn_convert = ttk.Button(main_frame,
+                         text='Convert',
+                         command=convert,
+                         bootstyle='danger')
 btn_convert.grid(column=0, row=2, columnspan=2)
 
 root.mainloop()
